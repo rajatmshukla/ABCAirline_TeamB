@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.myapp.spring.model.Product;
 
-public interface ProductRepository {
+public interface PassengerRepository {
 
 	Product saveProduct(Product product);
 

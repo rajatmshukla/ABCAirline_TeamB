@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.myapp.spring.model.Product;
 
 @Repository
-public class ProductRepositoryImpl implements ProductRepository {
+public class PassengerRepositoryImpl implements PassengerRepository {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;

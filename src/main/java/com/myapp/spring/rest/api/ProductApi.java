@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myapp.spring.model.Product;
-import com.myapp.spring.repository.ProductRepository;
+import com.myapp.spring.repository.PassengerRepository;
 
 @RestController
 @RequestMapping("/airline")
 public class ProductApi {
 
 	@Autowired
-	private ProductRepository repository;
+	private PassengerRepository repository;
 
 	@GetMapping
 	public List<Product> getAll() {
