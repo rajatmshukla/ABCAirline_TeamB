@@ -8,12 +8,12 @@
 		<version>2.4.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>products-app-demo-spring-boot</groupId>
-	<artifactId>products-app-demo-spring-boot</artifactId>
+	<groupId>ABCAirline_TeamB</groupId>
+	<artifactId>ABCAirline_TeamB</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	
 	<packaging>war</packaging>
-	<name>products-app-demo-spring-boot</name>
+	<name>ABCAirline_TeamB</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -38,7 +38,7 @@
 <scm>
   <connection>scm:git:git@github.com:rajatmshukla/ABCAirline_TeamB</connection>
   <developerConnection>scm:git:git@github.com:rajatmshukla/ABCAirline_TeamB</developerConnection>
-  <url>git@github.com:rajatmshukla/ABCAirline_TeamBs</url>
+  <url>git@github.com:rajatmshukla/ABCAirline_TeamB</url>
   <tag>v0.1.1</tag>
 </scm>
 	
