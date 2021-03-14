@@ -17,8 +17,6 @@ public class PassengerRepositoryImpl implements PassengerRepository {
 
 	@Override
 	public List<Product> findAll() {
-		// TODO Auto-generated method stub
-		// return null;
 		return jdbcTemplate.query("select * from airline", new BeanPropertyRowMapper<>(Product.class));
 	}
 

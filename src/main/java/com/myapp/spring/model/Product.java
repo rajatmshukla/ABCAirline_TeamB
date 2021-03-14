@@ -12,64 +12,36 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String Username;
-	private String Password;
-	private String privileges;
 	private String Firstname;
 	private String Lastname;
-	private Integer Age;
-	private String Gender;
-	private Integer Mobile;
-	private String Email;
-	private String ArrivalCity;
-	private String DepartureCity;
-	private Integer TravelDate;
-	private Integer Type;
+	private String TravelDate;
 	private String SeatNo;
-	private Integer NumOfPassenger;
-	private Integer NumOfBags;
-	private Integer TotalFare;
 
 	public Product() {
 
 	}
 
-	public String getUsername(String string) {
+	public Product(String Username, String Firstname, String Lastname, String TravelDate, String SeatNo) {
+		this.Username = Username;
+		this.Firstname = Firstname;
+		this.Lastname = Lastname;
+		this.TravelDate = TravelDate;
+		this.SeatNo = SeatNo;
+	}
+
+	public String getUsername() {
 		return Username;
 	}
 
-	public Product(String Username, String Password, Integer TotalFare, String Firstname, String Lastname,
-			Integer TravelDate, String SeatNo) {
+	public void setUsername(String Username) {
 		this.Username = Username;
-		this.Password = Password;
-		this.TotalFare = TotalFare;
-		this.Firstname = Firstname;
-		this.Lastname = Lastname;
-		this.SeatNo = SeatNo;
-		this.TravelDate = TravelDate;
-
-	}
-
-	public String getPassword() {
-		return Password;
-	}
-
-	public void setPassword(String Password) {
-		this.Password = Password;
-	}
-
-	public Integer TotalFare() {
-		return TotalFare;
-	}
-
-	public void setTotalFare(Integer TotalFare) {
-		this.TotalFare = TotalFare;
 	}
 
 	public String getFirstname() {
 		return Firstname;
 	}
 
-	public void Firstname(String Firstname) {
+	public void setFirstname(String Firstname) {
 		this.Firstname = Firstname;
 	}
 
@@ -77,8 +49,16 @@ public class Product {
 		return Lastname;
 	}
 
-	public void Lastname(String Lastname) {
+	public void setLastname(String Lastname) {
 		this.Lastname = Lastname;
+	}
+
+	public String getTravelDate() {
+		return TravelDate;
+	}
+
+	public void setTravelDate(String TravelDate) {
+		this.TravelDate = TravelDate;
 	}
 
 	public String getSeatNo() {
@@ -88,13 +68,4 @@ public class Product {
 	public void setSeatNo(String SeatNo) {
 		this.SeatNo = SeatNo;
 	}
-
-	public Integer getTravelDate() {
-		return TravelDate;
-	}
-
-	public void setTravelDate(Integer TravelDate) {
-		this.TravelDate = TravelDate;
-	}
-
 }

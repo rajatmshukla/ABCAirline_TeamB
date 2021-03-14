@@ -15,7 +15,7 @@ import com.myapp.spring.repository.PassengerRepository;
 @RestController
 @RequestMapping("/passenger")
 
-public class ProductApi {
+public class PassengerApi {
 
 	@Autowired
 	private PassengerRepository repository;
@@ -28,7 +28,7 @@ public class ProductApi {
 		return repository.findAll();
 	}
 
-	@GetMapping("/login/{Username}/notify")
+	@GetMapping("/login/notify/{Username}")
 	public String Notifyuser(@PathVariable("Username") String Username) {
 
 		try {
