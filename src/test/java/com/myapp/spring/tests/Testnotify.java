@@ -57,8 +57,7 @@ public class Testnotify {
 		ServletInitializer ab = new ServletInitializer();
 		PassengerRepositoryImpl newrepo = new PassengerRepositoryImpl();
 		doReturn(mockFlight).when(userService).Notifyuser(mockFlight.getUsername());
-		MvcResult result = mockMvc.perform(get("/passenger/login/notify/apoorva")).andExpect(status().isOk())
-				.andReturn();
+		MvcResult result = mockMvc.perform(get("/airline/login/notify/apoorva")).andExpect(status().isOk()).andReturn();
 		System.out.println(result.getResponse().getContentAsString());
 		assertTrue(result.getResponse().getContentAsString()
 				.contains("<html><body>" + "<h1>WELCOME TO ABC AIRLINES </h1><br> <h3>Hello</h3>"

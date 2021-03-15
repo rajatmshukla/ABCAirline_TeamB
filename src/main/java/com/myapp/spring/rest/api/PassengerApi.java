@@ -13,7 +13,7 @@ import com.myapp.spring.model.Product;
 import com.myapp.spring.repository.PassengerRepository;
 
 @RestController
-@RequestMapping("/passenger")
+@RequestMapping("/airline")
 
 public class PassengerApi {
 
