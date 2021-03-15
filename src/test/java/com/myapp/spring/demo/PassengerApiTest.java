@@ -57,6 +57,7 @@ public class PassengerApiTest {
 	}
 
 	@Test
+	
 	public void testGetFlightById() throws Exception {
 
 		Product mockFlight = new Product();
