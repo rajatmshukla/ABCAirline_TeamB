@@ -11,21 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.myapp.spring.model.Product;
-import com.myapp.spring.repository.PassengerRepository;
+import com.myapp.spring.model.ProductLogin;
+import com.myapp.spring.repository.PassengerRepositoryLogin;
 
 @RestController
 @RequestMapping("/airline")
-public class ProductApi {
+public class LoginApi {
 
 	@Autowired
-	private PassengerRepository repository;
-
-	@GetMapping
-	public List<Product> getAll() {
-		return repository.findAll();
-
-	}
+	private PassengerRepositoryLogin repository;
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -36,25 +30,32 @@ public class ProductApi {
 		try {
 			String query = "select Username from registry where Username=?";
 			Object[] inputs = new Object[] { Username };
-			String username = jdbcTemplate.queryForObject(query, String.class, inputs);
+			String username1 = jdbcTemplate.queryForObject(query, String.class, inputs);
 			String query1 = "select Password from registry where Password=?";
 			Object[] inputs1 = new Object[] { Password };
-			String password = jdbcTemplate.queryForObject(query1, String.class, inputs1);
+			String password2 = jdbcTemplate.queryForObject(query1, String.class, inputs1);
 
-			// return Integer.toString(empName);
-			return "<html><body>" + "<h1>Welcome To Abc Airline Service</h1><br> <h3>Mr. " + username
-					+ " You can serach for our flight</h3>" + "</body></html>";
-
+			return "<html><body>" + "<h1>login Details</h1><br> <h3>Your Username" + username1 + password2
+					+ " is present in our database.<br>Congratulations your login Done!</h3>" + "</body></html>";
 		} catch (Exception e) {
 			return "<html><body>"
-					+ "<h1>Sorry!</h1><br> <h3>This Username is not registered <br> Please register soon.</h3>"
+					+ "<h1>login Details</h1><br> <h3>Your username is not present in our database.<br>Unfortunatly your login is NOT DONE</h3>"
 					+ "</body></html>";
 		}
+	}
 
+	@GetMapping("/login")
+	public String welcome() {
+		return "<html><body>" + "<h1>WELCOME TO ABC AIRLINES </h1><br> <h3>login </h3>" + "</body></html>";
+	}
+
+	@GetMapping
+	public List<ProductLogin> getAll() {
+		return repository.findAll();
 	}
 
 	@PostMapping
-	public Product saveNewProduct(@RequestBody Product product) {
+	public ProductLogin saveNewProduct(@RequestBody ProductLogin product) {
 		return repository.saveProduct(product);
 	}
 
