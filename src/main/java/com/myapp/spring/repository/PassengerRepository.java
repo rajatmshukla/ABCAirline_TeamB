@@ -8,6 +8,9 @@ public interface PassengerRepository {
 
 	Product saveProduct(Product product);
 
-	List<Product> findAll();
+	List<Product> findAll(String product);
+	
+	Product findByName(String firstname);
 
+	
 }

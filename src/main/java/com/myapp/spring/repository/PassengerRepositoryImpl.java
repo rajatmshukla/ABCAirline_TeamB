@@ -24,10 +24,18 @@ public class PassengerRepositoryImpl implements PassengerRepository {
 		return product;
 	}
 
+	
 	@Override
-	public List<Product> findAll() {
+	public List<Product> findAll(String product) {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.query("select * from crm", new BeanPropertyRowMapper<>(Product.class));
+		return jdbcTemplate.query("select firstname from crm where firstname=?",
+				new BeanPropertyRowMapper<>(Product.class),product);
+	}
+	@Override
+	public Product findByName(String firstname) {
+		// TODO Auto-generated method stub
+		return jdbcTemplate.queryForObject("select * from crm where firstname=?",
+				new BeanPropertyRowMapper<>(Product.class), firstname);
 	}
 
 }

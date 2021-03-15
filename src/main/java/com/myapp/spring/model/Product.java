@@ -1,7 +1,15 @@
 package com.myapp.spring.model;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "crm")
 public class Product {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String firstname;
 	private String lastname;
 	private String email;
@@ -17,7 +25,7 @@ public class Product {
 
 	public Product(String firstname, String lastname, String email, String mobile, Integer flightid, String traveldate,
 			String feedback, Integer rating) {
-		super();
+		
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;

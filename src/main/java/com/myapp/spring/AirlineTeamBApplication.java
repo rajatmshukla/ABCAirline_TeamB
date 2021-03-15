@@ -9,6 +9,5 @@ public class AirlineTeamBApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AirlineTeamBApplication.class, args);
 	}
-	
 
 }
