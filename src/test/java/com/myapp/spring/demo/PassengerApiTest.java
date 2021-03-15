@@ -60,7 +60,6 @@ public class PassengerApiTest {
 	// @DisplayName("Test Flight with name successfully - GET /airline/feedback/jaasir")
 	public void testGetFlightById() throws Exception {
 
-		// Prepared mock flight
 		Product mockFlight = new Product();
 		mockFlight.setFirstname("jaasir");
 		mockFlight.setLastname("kp");
@@ -92,7 +91,6 @@ public class PassengerApiTest {
 	
 	public void testAddNewFlight() throws Exception {
 
-		// Prepare Mock Product
 		Product mockFlight = new Product();
 		mockFlight.setFirstname("sushma");
 		mockFlight.setLastname("g");
