@@ -71,16 +71,13 @@ public class PassengerApiTest {
 		mockFlight.setFeedback("nice");
 		mockFlight.setRating(4);
 
-		// prepared mock service method
+		
 		Product mockFlightcons = new Product("jaasir","kp","jas@gmail.com","9048081234",90,"2020-09-18","nice",4);
 		mockFlight.getFirstname();
 		ServletInitializer ab = new ServletInitializer();
 		PassengerRepositoryImpl newrepo = new PassengerRepositoryImpl();
 		
 		doReturn(mockFlight).when(service).findByName(mockFlight.getFirstname());
-
-		// perform get request
-
 		mockMvc.perform(MockMvcRequestBuilders.get("/airline/feedback/jaasir", "jaasir")).andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
 
