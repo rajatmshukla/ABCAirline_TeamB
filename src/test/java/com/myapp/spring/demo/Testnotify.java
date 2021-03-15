@@ -74,7 +74,6 @@ public class Testnotify {
 		assertFalse(result.getResponse().getContentAsString().contains("<html><body>"
 				+ "<h1>login Details</h1><br> <h3>Your username is not present in our database.<br>Unfortunatly your login is NOT DONE</h3>"
 				+ "</body></html>"));
-
 	}
 
 	private Productnotify getUserInfo() {
