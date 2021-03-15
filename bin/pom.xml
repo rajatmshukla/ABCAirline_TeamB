@@ -8,13 +8,13 @@
 		<version>2.4.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ABCAirline-TeamB-Spring</groupId>
-	<artifactId>ABCAirline-TeamB-Spring</artifactId>
+	<groupId>ABCAirline-TeamB-Spring-crm</groupId>
+	<artifactId>ABCAirline-TeamB-Spring-crm</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	
 	<packaging>war</packaging>
-	<name>ABCAirline-TeamB-Spring</name>
-	<description>Demo project for ABC AIRLINE</description>
+	<name>ABCAirline-TeamB-Spring-crm</name>
+	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<surefire.version>2.17</surefire.version>
@@ -178,6 +178,4 @@
 
         </build>
 
-
 </project>
-
