@@ -57,7 +57,6 @@ public class PassengerApiTest {
 	}
 
 	@Test
-	// @DisplayName("Test Flight with name successfully - GET /airline/feedback/jaasir")
 	public void testGetFlightById() throws Exception {
 
 		Product mockFlight = new Product();
