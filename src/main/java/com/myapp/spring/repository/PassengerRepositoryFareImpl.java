@@ -24,25 +24,22 @@ public class PassengerRepositoryFareImpl implements PassengerRepositoryFare {
 
 	@Override
 	public int calcFuelCost(ProductFare p1) {
-		// TODO Auto-generated method stub
+		
 		return (p1.getDuration()*p1.getFuel_price()*2508);
 	}
 
 	@Override
 	public int addExpense(ProductFare p1) {
-		// TODO Auto-generated method stub
 		return (p1.getMaintanence_charges()+p1.getFood_beverages()+p1.getTechnical_exp()+p1.getMiscellaneous());
 	}
 
 	@Override
 	public int perSeatCalc(ProductFare p1) {
-		// TODO Auto-generated method stub
 		return ((p1.getMaintanence_charges()+p1.getFood_beverages()+p1.getTechnical_exp()+p1.getMiscellaneous())/p1.getCapacity());
 	}
 
 	@Override
 	public int exclusiveCalc(ProductFare p1) {
-		// TODO Auto-generated method stub
 		if(p1.getClassf().equals("business"))
 		{
 		return 0;
@@ -53,7 +50,6 @@ public class PassengerRepositoryFareImpl implements PassengerRepositoryFare {
 
 	@Override
 	public int splDayCalc(ProductFare p1) {
-		// TODO Auto-generated method stub
 		if(p1.isSplday()==true)
 			return 400;
 		else
@@ -62,7 +58,6 @@ public class PassengerRepositoryFareImpl implements PassengerRepositoryFare {
 
 	@Override
 	public String dispFare(String Flight_name, String classf) {
-		// TODO Auto-generated method stub
 		ProductFare p2=Notifyuser(Flight_name,classf);
 		double ans=(calcFuelCost(p2)+addExpense(p2)+perSeatCalc(p2)+splDayCalc(p2))/100000;
 		if (classf.equalsIgnoreCase("business"))

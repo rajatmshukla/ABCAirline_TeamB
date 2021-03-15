@@ -26,7 +26,7 @@ public class ProductFare {
 	private boolean splday;
 	
 	public ProductFare() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public ProductFare(String flight_name, String src, String des, String classf, int kms, int duration, int fuel_price,
