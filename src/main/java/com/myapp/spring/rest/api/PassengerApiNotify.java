@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.myapp.spring.model.Product;
-import com.myapp.spring.repository.PassengerRepository;
+import com.myapp.spring.model.Productnotify;
+import com.myapp.spring.repository.PassengerRepositorynotify;
 
 @RestController
 @RequestMapping("/airline")
 
-public class PassengerApi {
+public class PassengerApiNotify {
 
 	@Autowired
-	private PassengerRepository repository;
+	private PassengerRepositorynotify repository;
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
 	@GetMapping
-	public List<Product> getAll() {
+	public List<Productnotify> getAll() {
 		return repository.findAll();
 	}
 

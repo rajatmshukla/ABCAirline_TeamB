@@ -1,4 +1,4 @@
-package com.myapp.spring.tests;
+package com.myapp.spring.demo;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -24,9 +24,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myapp.spring.ServletInitializer;
-import com.myapp.spring.model.Product;
-import com.myapp.spring.repository.PassengerRepository;
-import com.myapp.spring.repository.PassengerRepositoryImpl;
+import com.myapp.spring.model.Productnotify;
+import com.myapp.spring.repository.PassengerRepositoryNotifyImpl;
+import com.myapp.spring.repository.PassengerRepositorynotify;
 
 @SpringBootTest
 
@@ -35,16 +35,16 @@ public class Testnotify {
 	@Autowired
 	private MockMvc mockMvc;
 	@MockBean
-	private PassengerRepository userService;
+	private PassengerRepositorynotify userService;
 
-	private static File DATA_JSON = Paths.get("src", "main", "resources", "ReferenceData.json").toFile();
+	private static File DATA_JSON = Paths.get("src", "main", "resources", "Notify.json").toFile();
 
-	Product login[] = null;
+	Productnotify login[] = null;
 
 	@BeforeEach
 	void setup() throws JsonParseException, JsonMappingException, IOException {
 
-		login = new ObjectMapper().readValue(DATA_JSON, Product[].class);
+		login = new ObjectMapper().readValue(DATA_JSON, Productnotify[].class);
 
 	}
 
@@ -52,19 +52,24 @@ public class Testnotify {
 	public void testCreateUser() throws Exception {
 		String username = "apoorva";
 		when(userService.Notifyuser(username)).thenReturn(getUserInfo());
-		Product mockFlight = new Product();
+		Productnotify mockFlight = new Productnotify();
 		mockFlight.getUsername();
+		mockFlight.getFirstname();
+		mockFlight.getLastname();
+		mockFlight.getTravelDate();
+		mockFlight.getSeatNo();
 		ServletInitializer ab = new ServletInitializer();
-		PassengerRepositoryImpl newrepo = new PassengerRepositoryImpl();
+		PassengerRepositoryNotifyImpl newrepo = new PassengerRepositoryNotifyImpl();
 		doReturn(mockFlight).when(userService).Notifyuser(mockFlight.getUsername());
 		MvcResult result = mockMvc.perform(get("/airline/login/notify/apoorva")).andExpect(status().isOk()).andReturn();
 		System.out.println(result.getResponse().getContentAsString());
 		assertTrue(result.getResponse().getContentAsString()
 				.contains("<html><body>" + "<h1>WELCOME TO ABC AIRLINES </h1><br> <h3>Hello</h3>"
-						+ getUserInfo().getUsername() + getUserInfo().getFirstname() + " " + getUserInfo().getLastname()
+						+ getUserInfo().getFirstname() + " " + getUserInfo().getLastname()
 						+ "<h3>Your Travel is Scheduled ON : <br>" + getUserInfo().getTravelDate()
 						+ "<h3>Your Seat No. Is : <br>" + getUserInfo().getSeatNo()
 						+ "<h3>THANK YOU FOR FLYING WITH US! <br>" + "</body> </html>"));
+
 		System.out.println(result.getResponse().getContentAsString());
 		assertFalse(result.getResponse().getContentAsString().contains("<html><body>"
 				+ "<h1>login Details</h1><br> <h3>Your username is not present in our database.<br>Unfortunatly your login is NOT DONE</h3>"
@@ -72,8 +77,8 @@ public class Testnotify {
 
 	}
 
-	private Product getUserInfo() {
-		Product user = new Product();
+	private Productnotify getUserInfo() {
+		Productnotify user = new Productnotify();
 		user.setUsername("apoorva");
 		user.setFirstname("apoorva");
 		user.setLastname("babu");

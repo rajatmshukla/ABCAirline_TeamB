@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "airline")
-public class Product {
+public class Productnotify {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String Username;
@@ -17,11 +17,11 @@ public class Product {
 	private String TravelDate;
 	private String SeatNo;
 
-	public Product() {
+	public Productnotify() {
 
 	}
 
-	public Product(String Username, String Firstname, String Lastname, String TravelDate, String SeatNo) {
+	public Productnotify(String Username, String Firstname, String Lastname, String TravelDate, String SeatNo) {
 		this.Username = Username;
 		this.Firstname = Firstname;
 		this.Lastname = Lastname;

@@ -7,22 +7,22 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.myapp.spring.model.Product;
+import com.myapp.spring.model.Productnotify;
 
 @Repository
-public class PassengerRepositoryImpl implements PassengerRepository {
+public class PassengerRepositoryNotifyImpl implements PassengerRepositorynotify {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public List<Product> findAll() {
-		return jdbcTemplate.query("select * from airline", new BeanPropertyRowMapper<>(Product.class));
+	public List<Productnotify> findAll() {
+		return jdbcTemplate.query("select * from airline", new BeanPropertyRowMapper<>(Productnotify.class));
 	}
 
 	@Override
-	public Product Notifyuser(String Username) {
+	public Productnotify Notifyuser(String Username) {
 		return jdbcTemplate.queryForObject("select Firstname,Lastname,TravelDate,SeatNo from airline where Username=?",
-				new BeanPropertyRowMapper<>(Product.class), Username);
+				new BeanPropertyRowMapper<>(Productnotify.class), Username);
 	}
 }
