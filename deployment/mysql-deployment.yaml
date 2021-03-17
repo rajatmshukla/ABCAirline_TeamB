@@ -1,0 +1,109 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  #type: NodePort
+  ports:
+    - port: 3306
+      #nodePort: 31000
+  selector:
+    app: mysql
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - image: mysql:8
+          name: mysql
+          resources:
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+          env:
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config
+                  key: MYSQL_DATABASE
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_ROOT_PASSWORD
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_USER
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_PASSWORD
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+            - name: initdb
+              mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
+        - name: initdb
+          configMap:
+            name: mysql-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+data:
+  MYSQL_DATABASE: abc_airline
+  MYSQL_DATABASE_URL: jdbc:mysql://mysql/abc_airline
+  initdb.sql: 
+    use abc_airline;
+    create table airline (Username varchar(50),Password varchar(50),privileges varchar(20),Firstname varchar(20),Lastname varchar(20),Age int,Gender varchar(20),Mobile varchar(10),Email varchar(50),ArrivalCity varchar(20),DepartureCity varchar(20),TravelDate date,SeatNo varchar(10),NumOfPassenger int,NumOfBags int,TotalFare int);
+    insert into airline values ('apoorva','apoorva@97','business','apoorva','babu',25,'female','9875543210','apoorvab@gmail.com','bangalore','kochi','2011-04-21','7h',1,2,5600);
+    create table farecalc (Flight_name varchar(50), src varchar(50), des varchar(50), kms int, duration int, fuel_price int, maintanence_charges int, food_beverages int, classf varchar(50), capacity int, technical_exp int, miscellaneous int, splday tinyint(1));
+    insert into farecalc values ("abc12","CHN","BOM","1256","2","40000","10000","9000","business","256","20000","5000","1");
+    insert into farecalc values ("abc12","CHN","BOM","1256","2","40000","10000","9000","eco","256","20000","5000","1");
+    insert into farecalc values ("abc14","CHN","DEL","1756","3","40000","10000","9000","business","256","20000","5000","1");
+    insert into farecalc values ("abc14","CHN","DEL","1756","3","40000","10000","9000","eco","256","20000","5000","1");
+    create table crm (firsname varchar(20),lastname varchar(20),email varchar(20),mobile varchar(20),flightid int,traveldate date,feedback varchar(50),rating int);
+    insert into crm values("madhu","mithra","mad@abc.com","9876543210",12,"2020-02-08","good",4);
+    create table registry (username varchar(20), pass varchar(20));
+    insert into registry values ('swati','adcd');
