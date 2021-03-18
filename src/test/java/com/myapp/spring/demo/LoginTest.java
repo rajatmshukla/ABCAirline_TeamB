@@ -71,14 +71,11 @@ public class LoginTest {
 		MvcResult result = mockMvc.perform(get("/airlogin/login/swati/adcd")).andExpect(status().isOk()).andReturn();
 		System.out.println(result.getResponse().getContentAsString());
 		assertFalse(result.getResponse().getContentAsString()
-				.contains("<html><body>" + "<h1>login Details</h1><br> <h3>Your Username" + getUserInfo().getUsername()
-						+ getUserInfo().getPass()
+				.contains("<html><body>" + "<h1>login Details</h1><br> <h3>Your Username " + getUserInfo().getUsername()
 						+ " is present in our database.<br>Congratulations your login Done!</h3>" + "</body></html>"));
 
-		
-
 	}
-	
+
 	@Test
 	public void testCreateUserLogin2() throws Exception {
 		String username = "swatim";
@@ -93,17 +90,14 @@ public class LoginTest {
 		doReturn(mockFlight).when(userService).findByUsernameLog(mockFlight.getUsername(), mockFlight.getPass());
 
 		MvcResult result = mockMvc.perform(get("/airlogin/login/swati/adcd")).andExpect(status().isOk()).andReturn();
-		
 
 		System.out.println(result.getResponse().getContentAsString());
-		
-		
+
 		assertTrue(result.getResponse().getContentAsString().contains("<html><body>"
 				+ "<h1>login Details</h1><br> <h3>Your username is not present in our database.<br>Unfortunatly your login is NOT DONE</h3>"
 				+ "</body></html>"));
 
 	}
-
 
 	private ProductLogin getUserInfo() {
 		ProductLogin user = new ProductLogin();

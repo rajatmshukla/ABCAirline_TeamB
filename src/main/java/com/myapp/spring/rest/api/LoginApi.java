@@ -35,7 +35,7 @@ public class LoginApi {
 			Object[] inputs1 = new Object[] { pass };
 			String password2 = jdbcTemplate.queryForObject(query1, String.class, inputs1);
 
-			return "<html><body>" + "<h1>login Details</h1><br> <h3>Your Username" + username1 + password2
+			return "<html><body>" + "<h1>login Details</h1><br> <h3>Your Username " + username1
 					+ " is present in our database.<br>Congratulations your login Done!</h3>" + "</body></html>";
 		} catch (Exception e) {
 			return "<html><body>"
@@ -58,6 +58,5 @@ public class LoginApi {
 	public ProductLogin saveNewProductLog(@RequestBody ProductLogin product) {
 		return repository.saveProductLog(product);
 	}
-	
 
 }
