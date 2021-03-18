@@ -106,5 +106,6 @@ data:
     create table crm (firstname varchar(20),lastname varchar(20),email varchar(20),mobile varchar(20),flightid int,traveldate date,feedback varchar(50),rating int);
     insert into crm values("madhu","mithra","mad@abc.com","9876543210",12,"2020-02-08","good",4);
     insert into crm values("alen","v","al@gmail.com","9034522347",91,"2020-05-16","powerful",5);
+    insert into crm values("jaasir","kp","mad@abc.com","9876543210",12,"2020-02-08","good",4);
     create table registry (username varchar(20), pass varchar(20));
     insert into registry values ('swati','adcd');
