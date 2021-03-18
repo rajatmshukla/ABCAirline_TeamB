@@ -34,4 +34,8 @@ public class PassengerApi {
 		return repository.findByNamecrm(firstname);
 	}
 
+	@GetMapping("/error")
+	public String error() {
+		return "<html><body>" + "<h1>sorry </h1><br> <h3>You are not available in database</h3>" + "</body></html>";
+	}
 }
