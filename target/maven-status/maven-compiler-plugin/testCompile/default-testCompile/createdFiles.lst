@@ -1,0 +1,6 @@
+com\myapp\spring\demo\LoginTest.class
+com\myapp\spring\demo\PassengerApiTest.class
+com\myapp\spring\demo\FareTest.class
+com\myapp\spring\demo\InvoicePassengerApiTest.class
+com\myapp\spring\AirlineTeamBApplicationTests.class
+com\myapp\spring\demo\Testnotify.class
